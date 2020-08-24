@@ -56,7 +56,10 @@ class ToDoList(StageTest):
         tables_in_db = self.execute('SELECT  name FROM sqlite_master '
                                     'WHERE type =\'table\' AND name '
                                     'NOT LIKE \'sqlite_%\';')
-        tables_in_db = [table[0] for table in tables_in_db]
+        try:
+            tables_in_db = [table[0] for table in tables_in_db]
+        except TypeError:
+            return CheckResult.wrong('Your database or its content are written in the wrong format.')
         if 'task' not in tables_in_db:
             return CheckResult.wrong('Your database doesn\'t have \'task\' table.')
 
