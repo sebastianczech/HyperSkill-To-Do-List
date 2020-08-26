@@ -14,8 +14,6 @@ stages:
   step: 9622
 topics:
   0:
-  - title: Boolean logic
-    theory_id: 6025
   - title: Computer programming
     theory_id: 8739
   - title: Intro to computational thinking
@@ -72,6 +70,8 @@ topics:
     theory_id: 6065
   - title: Functional decomposition
     theory_id: 9571
+  - title: Boolean logic
+    theory_id: 6025
   1:
   - title: Files
     theory_id: 6989
@@ -124,8 +124,6 @@ topics:
   - title: PyCharm basics
     theory_id: 6193
   2:
-  - title: Datetime module
-    theory_id: 7324
   - title: Immutability
     theory_id: 7929
   - title: Indexes
@@ -152,6 +150,8 @@ topics:
     theory_id: 9544
   - title: Load module
     theory_id: 6019
+  - title: Datetime module
+    theory_id: 7324
   3:
   - title: Basic DELETE statement
     theory_id: 9075

@@ -100,12 +100,13 @@ files:
                 return CheckResult.wrong('You didn\'t create the database file. It should be named todo.db')
             shutil.copy2('todo.db', 'temp.db')
 
-            tables_in_db = self.execute('SELECT  name FROM sqlite_master '
+            tables_in_db = self.execute('SELECT name FROM sqlite_master '
                                         'WHERE type =\'table\' AND name '
                                         'NOT LIKE \'sqlite_%\';')
+
             try:
                 tables_in_db = [table[0] for table in tables_in_db]
-            except TypeError:
+            except Exception:
                 return CheckResult.wrong('Your database or its content are written in the wrong format.')
             if 'task' not in tables_in_db:
                 return CheckResult.wrong('Your database doesn\'t have \'task\' table.')
@@ -200,8 +201,8 @@ files:
             last_block = blocks[6].lower()
 
             if (first_date_month not in first_block
-                    or str(first_date_day) not in first_block
-                    or first_date_weekday not in first_block):
+                or str(first_date_day) not in first_block
+                or first_date_weekday not in first_block):
                 return CheckResult.wrong('When you output the week\'s tasks the first date should be today\'s date.\n'
                                          'You should print weekday, number of the day and the short form of the month.')
 
@@ -209,8 +210,8 @@ files:
                 return CheckResult.wrong('When you output the week\'s tasks the first date doesn\'t contain added task.')
 
             if (second_date_month not in second_block
-                    or str(second_date_day) not in second_block
-                    or second_date_weekday not in second_block):
+                or str(second_date_day) not in second_block
+                or second_date_weekday not in second_block):
                 return CheckResult.wrong(
                     'When you output the week\'s tasks the fourth date should be the day that in 4 days from today.\n'
                     'You should print weekday, number of the day and the short form of the month.')
@@ -220,8 +221,8 @@ files:
                     'When you output the week\'s tasks the fourth date doesn\'t contain added task for which deadline is in 4 days.')
 
             if (last_date_month not in last_block
-                    or str(last_date_day) not in last_block
-                    or last_date_weekday not in last_block):
+                or str(last_date_day) not in last_block
+                or last_date_weekday not in last_block):
                 return CheckResult.wrong(
                     'When you output the week\'s tasks the last date should be the day that in 6 days from today.\n'
                     'You should print weekday, number of the day and the short form of the month.')
@@ -281,7 +282,7 @@ files:
             tasks = blocks[0].lower()
 
             if ('first missed task' not in tasks
-                    or 'second missed task' not in tasks):
+                or 'second missed task' not in tasks):
                 return CheckResult.wrong('When you print missed task you don\'t print all of them!')
 
             lines = tasks.splitlines()
